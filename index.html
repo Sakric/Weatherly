@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script defer src="src/js/controller.js" type="module"></script>
+  <link rel="shortcut icon" href="src/img/Snow.png" type="image/x-icon" />
+
+  <title>Weatherly</title>
+</head>
+
+<body>
+  <nav>
+    <div class="nav__logo"><a id="logo" href="#"><img src="src/img/logo.png"></a> </div>
+    <div class="nav__search">
+      <form class="search">
+        <input type="text" class="search__field" placeholder="Search for city" />
+        <button class="btn search__btn">
+          <span>Search</span>
+        </button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="buttons">
+
+      <button id="list" class="card__button">Recomended list</button>
+
+      <button id="current" class="card__button">Current location</button>
+    </div>
+    <div class="content">
+
+      <!--  Error
+      <div class="card__big error">
+        <div class="card__body__error">
+          <div class="error__text">
+            <h2>Error (404)</h2>
+            <p>Something went wrong! Try again.</p>
+          </div>
+          <img class="icon__error" src="src/img/error.png">
+        </div>
+      </div> -->
+
+
+      <!-- <div class="card__big__list">
+        <div class="card__body">
+          <h3>List</h2>
+            <div class="card__content__list">
+              <button class="list__content" data-location="Berlin">
+                <p>Berlin, Germany</p>
+                <img class="list__icon" src="src/img/Germany.jpg">
+              </button>
+              <button class="list__content" data-location="Paris">
+                <p>Paris, France</p>
+                <p>Image</p>
+              </button>
+              <button class="list__content" data-location="Vilnius">
+                <p>Vilnius, Lithuania</p>
+                <p>Image</p>
+              </button>
+              <button class="list__content" data-location="Madrid">
+                <p>Madrid, Spain</p>
+                <p>Image</p>
+              </button>
+              <button class="list__content" data-location="Lodnon">
+                <p>Lodnon, United Kingdom</p>
+                <p>Image</p>
+              </button>
+            </div>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="card__body">
+          <h3>Weather</h3>
+          <div class="card__content">
+            <div class="card_city">
+              <h2 class="main__name">Vilnius</h3>
+                <h2 class="main__temp">22°C</h2>
+                <h2 class="main_desc">Partly Cloudy</h2>
+            </div>
+            <img class="icon__main" src="sunset.png">
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="card__body">
+          <h3>Stats</h3>
+          <div class="card__content__stats">
+            <div class="card__stat">
+              <h2><span>Humidity</span></h2>
+              <h2>800 mb</h2>
+            </div>
+            <hr>
+            <div class="card__stat">
+              <h2><span>Visibility</span></h2>
+              <h2>4.3km</h2>
+            </div>
+            <hr>
+            <div class="card__stat">
+              <h2><span>Pressure</span></h2>
+              <h2>87 %</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__body">
+          <h3>Sun</h3>
+          <div class="card__content__rise">
+            <div class="sun__time">
+              <img class="icon__sunrise" src="sunrise.png">
+              <h2><span>Sunrise</span></h2>
+              <h2>07:06</h2>
+            </div>
+            <div class="sun__hr"></div>
+            <div class="sun__time">
+              <img class="icon__sunrise" src="sunset.png">
+              <h2><span>Sunset</span></h2>
+              <h2>18:24</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__body">
+          <h3>Wind</h3>
+          <div class="card__content__rise">
+            <div class="sun__time">
+              <img class="icon__sunrise" src="wind.png">
+              <h2><span>Wind</span></h2>
+              <h2>4 m/s</h2>
+            </div>
+            <div class="sun__hr"></div>
+            <div class="sun__time">
+              <img class="icon__arrow" src="arrow.png">
+              <h2><span>Degree</span></h2>
+              <h2>139°</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card__big">
+        <div class="card__body">
+          <h3>Daily</h3>
+          <div class="card__content__daily">
+            <div class="daily__content">
+              <h2><span class="date">Mon 03.09</span></h2>
+
+              <img class="icon__daily" src="wind.png">
+
+              <h2><span>22°C <span class="night">16°C</span></span></h2>
+              <h2>Wind</h2>
+            </div>
+            <div class="sun__hr"></div>
+            <div class="daily__content">
+              <h2><span class="date">Mon 03.09</span></h2>
+
+              <img class="icon__daily" src="wind.png">
+
+              <h2><span>22°C <span class="night">16°C</span></span></h2>
+              <h2>Wind</h2>
+            </div>
+            <div class="sun__hr"></div>
+            <div class="daily__content">
+              <h2><span class="date">Mon 03.09</span></h2>
+
+              <img class="icon__daily" src="wind.png">
+
+              <h2><span>22°C <span class="night">16°C</span></span></h2>
+              <h2>Wind</h2>
+            </div>
+            <div class="sun__hr"></div>
+            <div class="daily__content">
+              <h2><span class="date">Mon 03.09</span></h2>
+
+              <img class="icon__daily" src="wind.png">
+
+              <h2><span>22°C <span class="night">16°C</span></span></h2>
+              <h2>Wind</h2>
+            </div>
+            <div class="sun__hr"></div>
+            <div class="daily__content">
+              <h2><span class="date">Mon 03.09</span></h2>
+
+              <img class="icon__daily" src="wind.png">
+
+              <h2><span>22°C <span class="night">16°C</span></span></h2>
+              <h2>Wind</h2>
+            </div>
+            <div class="sun__hr"></div>
+            <div class="daily__content">
+              <h2><span class="date">Mon 03.09</span></h2>
+
+              <img class="icon__daily" src="wind.png">
+
+              <h2><span>22°C <span class="night">16°C</span></span></h2>
+              <h2>Wind</h2>
+            </div>
+          </div>
+
+        </div>
+      </div> -->
+      <!-- 
+      <div class="spinner">
+        <img class="icon__spinner" src="src/img/Spinner.png">
+      </div>
+    -->
+
+      <!-- <div id="map" class="card__big"> -->
+
+
+
+    </div>
+
+  </div>
+  </div>
+
+  <footer>
+    <p>This project was made in order to improve JavaScript knowledge.</p>
+    <div>
+      <p>Created by Sakric</p>
+      <a href="https://github.com/Sakric" target="_blank"><img src="src/img/GitHub.png"></a>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>

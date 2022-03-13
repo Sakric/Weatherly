@@ -1,0 +1,19 @@
+{
+  "name": "Weather",
+  "version": "1.0.0",
+  "description": "Weather forecast application",
+  "default": "index.html",
+  "dependencies": {
+    "core-js": "^3.21.1",
+    "leaflet": "^1.7.1",
+    "parcel": "^2.3.2",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Sakric",
+  "license": "ISC"
+}
